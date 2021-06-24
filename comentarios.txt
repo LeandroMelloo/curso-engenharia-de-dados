@@ -1,0 +1,105 @@
+Introdução á data pipelines
+  - Conceitos
+  - Projeto de ETL
+  - Extrair dados do Twitter
+  - Data Lake
+  - Automatizado e escalável
+  - Batch e streaming
+  - Apache Airflow
+  - Apache Spark
+
+Projeto: extração de dados do Twitter
+  - extrair mensagens do twitter -> mensagens dos usuarios -> disponilizar essas mensagens para Cientistas de Dados -> Fim do Projeto - Sucesso
+  - extrair mensagens -> escrever esse codigo em python e exportar em json -> inserir em um banco de dados
+  - Escalonamento
+  - Automação
+  - Monitoramento
+  - Manutenção
+  - Expansão
+  - Integração
+
+Criar uma prova de Conceito
+
+Conceitos de data pipelines ou encanamento de dados
+  - ETL e cadeias de processos
+  - Data Pipeline é uma cadeia de processo ou fluxo de trabalho ou workflows, pipelines manipulam dados.
+  - E = EXTRAÇÃO, T = TRANSFORMAÇÃO, L = ARMAZENAMENTO
+  - Batch = Lotes ou pacotes
+  - Streaming = fluxo ou transmissão
+  - Data Lake temos 2 tipos:
+    - estruturados: Parquet, AVRO
+    - semi-estruturados: CSV, JSON
+    - nao-estruturados: Textos, Áudios, Vídeos
+
+Por qual motivo vamos usar o modo ELT ao invés do ETL?
+
+Alternativa correta! Executar a carga antes da transformação permite que o dado seja transformado apenas quando necessário, prevenindo transformações desnecessárias e permitindo transformar múltiplas vezes, se for preciso.
+
+Ferramentas:
+  - Apache Airflow e Spark
+    - Apache Airflow = para orquestração de trabalhos
+      - agendar trabalhos para executar em horario programado
+      - monitorar o estado de cada execução
+      - Google Cloud Compose | AWS - MWAA (Manager Workflow Apache Airflow)
+      - Desenvolvido em Python
+      - vantagens: quebrar os trabalhos em etapas orquestradas, que tem seu inicio e fim
+      - Apache Airflow é uma plataforma de gerenciamento de fluxo de trabalho em código aberto. Tudo começou na Airbnb, em outubro de 2014, como uma solução para gerenciar os fluxos cada vez mais complexos da empresa. A criação do Airflow permitiu que a Airbnb pudesse criar e agendar programaticamente seus fluxos de trabalho, monitorando-os por meio da interface de usuário integrada do Airflow. Desde o início, o projeto é open source, tornando-se um projeto Apache Incubator em março de 2016, e um projeto Top-Level Apache Software Foundation em janeiro de 2019.
+
+      O Airflow é escrito em Python, e os fluxos de trabalho são criados por meio de scripts nessa mesma linguagem. O Airflow é projetado sob o princípio de "configuração como código". Embora outras plataformas de fluxo de trabalho deste tipo existam, usando linguagens de marcação como XML, o uso de Python permite que os desenvolvedores importem bibliotecas e classes para ajudá-los a criarem seus fluxos de trabalho.
+
+      Antes do Airflow existir, uma ferramenta bastante usada era o Cron, que basicamente é um agendador de scripts para sistemas Unix. O problema em usá-lo era que qualquer monitoramento ou alerta deveria ser implementado externamente. Outra ferramenta que faz o agendamento ao monitoramento é o Jenkins. Esta ferramenta é bastante usada em processos de CI/CD, e também como orquestrador de pipelines, pela junção do agendamento ao monitoramento dos trabalhos.
+
+      Em ambas as plataformas o agendamento de scripts não permite a quebra em etapas orquestradas, conhecido como DAG, que significa “gráfico acíclico direcionado”, ou seja, o Jenkins e o Cron permitem simplesmente que o trabalho seja executado, mas não existe nenhuma junção entre as etapas ou execuções.
+
+      Para exemplificar, um processo de ETL consiste em 3 etapas bem determinadas que devem ser executadas uma após a outra: a extração, a transformação e a carga. Sendo assim, com sistemas como o Cron ou o Jenkins, você tem 2 opções, criar um único script que executa todos os 3 passos, ou 3 execuções separadas utilizando um horário determinado para cada. Ou seja, se a extração normalmente demora 15 min, a segunda etapa, de transformação, será agendada pelo menos 15 min depois da extração. Isso pode causar tempo ocioso, ou 2 etapas rodando ao mesmo tempo, o que pode não ser proveitoso.
+    - Apache spark = para processamento distribuido
+      - desenvolvido em skala
+      - Apache Hadoop
+        - Map Reduce
+        - HDFS
+        - YARN
+        - Apache Spark é um motor analítico unificado para processamento de dados em larga escala. Ele fornece APIs de alto nível em Java, Scala, Python e R, e um mecanismo otimizado que oferece suporte a gráficos de execução geral. Spark também oferece suporte a um rico conjunto de ferramentas de nível superior, incluindo Spark SQL para SQL e processamento de dados estruturados, MLlib para aprendizado de máquina, GraphX para processamento de gráfico e Streams estruturados para computação incremental e processamento de fluxo.
+
+        Spark começou a ser desenvolvido por Matei Zaharia no UC Berkeley's AMPLab em 2009, e teve seu código aberto em 2010 sob uma licença BSD. Em 2013, o projeto foi doado para a Apache Software Foundation e mudou sua licença para o Apache 2.0. Em fevereiro de 2014, Spark tornou-se um Projeto Apache de nível superior. O Spark teve mais de 1000 colaboradores em 2015, tornando-o um dos projetos mais ativos na Apache Software Foundation, e um dos projetos de big data de código aberto mais ativos.
+
+        História do Spark e Hadoop
+        Em 2003 e 2004, Google publicou dois papers (artigos), o primeiro sobre o Google File System, que é um sistema de arquivos distribuído e escalável para grandes aplicações distribuídas, provendo tolerância a falhas e a possibilidade de armazenamento de centenas de terabytes. O segundo paper fala sobre um modelo de programação para simplificar o processamento de dados em grandes clusters utilizando duas funções, o Map e o Reduce, que significam “mapear” e “reduzir”.
+
+        Com base nessas ideias da Google, foi criado o Apache Hadoop em 2006, um framework composto por, entre outros:
+
+        Hadoop MapReduce, para processamento distribuído em larga escala;
+        Hadoop Distributed File System, ou HDFS, que é o sistema de arquivos distribuído, e a base do que hoje conhecemos como Data Lake;
+        Hadoop YARN, lançado em 2012, a plataforma de gerenciamento de recursos computacionais no cluster.
+        Junto com o Hadoop, várias ferramentas foram criadas utilizando o motor do Hadoop, como por exemplo o Apache Pig, que é uma linguagem de alto nível para facilitar a criação de trabalhos de MapReduce, e o Apache Hive, criado pelo Facebook e muito usado até hoje, e permite uma interface utilizando SQL para pesquisas no HDFS.
+
+        Outra ferramenta criada foi o Apache Spark, muito parecido com o Hadoop MapReduce, cujo principal foco foi a possibilidade de aplicação de funções repetidamente a um conjunto de dados, impossível de ser feito no Hadoop, sendo necessário iniciar um novo processo e carregar os dados em memória toda vez. A motivação vinha de algoritmos de Machine Learning e pesquisas analíticas que precisam carregar um certo conjunto de dados na memória e aplicar diferentes interações. Com isso, o Spark conseguia superar o Hadoop em trabalhos de Machine Learning com processamento 10x mais rápido, além de pesquisar um conjunto de dados de 40GB em menos de 1 segundo. Atualmente o Spark chega a processar 100x mais rápido que o Hadoop MapReduce.
+
+Construindo um programa de extração
+
+Temos um grande projeto pela frente: o time de marketing da Alura depende de dados para conseguir entender a interação que a empresa tem na rede social do Twitter. Construir um simples programa para extração dos dados e carregá-los em um banco de dados acessível para o time de marketing pode resolver o problema em curto prazo, mas logo virão outros projetos parecidos e outros times vão se interessar em ter acesso cada vez a mais dados.
+
+Com isso em mente, como você apresentaria este projeto para o time de dados e a empresa? Que ferramentas você conhece que te ajudariam nessa tarefa? Como este projeto estará pronto para o futuro onde mais fontes de dados precisam ser adicionadas e mantidas?
+
+###################################################################################################
+Instalaando Apache Airflow
+
+1° Passo:
+  - Criar uma pasta chamada datapipeline
+2° Passo:
+  - entrar dentro deste diretorio
+    - Comando: cd datapipeline
+3° Passo:
+  - Criar um ambiente virtual python:
+    - Comando: python -m venv .env
+4° Passo:
+  - Ativar o ambiente virtual python:
+    - Comando: .\.env\Scripts\Activate.ps1
+5° Passo:
+  - Criar uma variavel de ambiente
+    - Comando: set AIRFLOW_HOME=$(pwd)/airflow
+6° Passo:
+  - Instalar o Apache Airflow
+    - Comando: pip install apache-airflow==1.10.14 --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-1.10.14/constraints-3.7.txt" 
+7° Passo:
+  - Iniciando o Apache Airflow
+    - Comando: airflow initdb

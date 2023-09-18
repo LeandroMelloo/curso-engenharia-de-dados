@@ -1,0 +1,115 @@
+====================================================================================================
+Python: utilizando POO na Engenharia de Dados
+====================================================================================================
+
+O bom desenvolvimento de código é essencial na Engenharia de Dados para a construção de sistemas robustos,
+eficientes, e que consigam trabalhar com fluxos otimizados e grandes volumes de dados. 
+Para facilitar o desenvolvimento do produto em equipe, é importante seguir também boas 
+práticas de Engenharia de Software, e nesse contexto, surge o uso de paradigmas de programação diferentes,
+como a Programação Orientada a Objetos (POO).
+
+Nesse artigo, vamos conhecer um pouco mais sobre a Programação Orientada a Objetos através de exemplos 
+de código em Python explorando as características desse conceito.
+
+====================================================================================================
+O que é Programação Orientada a Objetos (POO)?
+====================================================================================================
+
+A Programação Orientada a Objetos (POO), também conhecida no inglês como Object Oriented Programming(OOP),
+é um paradigma de programação, uma maneira de organizar código que propõe a ideia de pôr em conjunto as 
+seções do código com dados e comportamentos relacionados, de maneira encapsulada. É também uma abordagem
+poderosa para estruturar softwares para análises e interpretação de grandes volumes de dados.
+
+Como o nome do paradigma sugere, esse formato se baseia na criação de objetos, que são os representantes
+de um modelo (ou ideia) que chamamos de classe. Uma classe, por sua vez, é uma estrutura que possui
+atributos (características) e métodos (funções) associados a ela.
+
+====================================================================================================
+Pilares da Programação Orientada a Objetos
+====================================================================================================
+
+São quatro os pilares da programação orientada a objetos:
+    - Abstração
+    - Encapsulamento
+    - Herança
+    - Polimorfismo
+
+Vamos conhecer cada um desses princípios?
+
+Abstração:
+    Essa característica nos permite representar modelos e estruturas complexas de forma simplificada e 
+    fácil de entender, por meio do uso de classes e métodos, que vão representar comportamentos e estados 
+    de um objeto. Por exemplo, uma classe chamada Animal pode ser construída como um modelo que tem
+    informações como 'nome' e 'tamanho', e comportamentos como 'comer' e 'dormir'. Essa classe pode
+    representar vários animais diferentes, de forma abstraída, sem especificar diretamente o animal
+    mas conseguindo representá-los.
+
+    Outro exemplo abstraído seria um modelo de Machine Learning para regressão, como uma Regressão Linear
+    ou Logística. Essas duas técnicas possuem métodos em comum, um de treino (fit) e outro para predição
+    (predict), que podemos generalizar e construir uma classe Regressor. Essa classe, por sua vez, pode
+    depois servir de base para construção de outras classes derivadas.
+
+Encapsulamento:
+    Representa a capacidade de construir seções do código de maneira a organizar funções e métodos
+    semelhantes em um mesmo objeto, ocultando informações internas que não deveriam ser acessadas por
+    outros métodos e/ou objetos. O Python providencia mecanismos para isolar e restringir acesso de
+    atributos em métodos fora de uma classe. A maneira mais comum é por meio de uma técnica chamada
+    'name mangling'.
+
+Herança:
+    Representa a capacidade de criar novas classes a partir de outras classes existentes, com a função
+    de estender funcionalidades, e possibilita reutilizar código. A herança permite que classes
+    compartilhem comportamentos e atributos comuns, ao mesmo tempo que permitem que as classes filhas
+    derivadas possuam novas funcionalidades específicas. Por meio da herança, também é possível definir
+    uma ordem de hierarquia entre os objetos.
+
+    Retomando ao exemplo da classe Produto, nós poderíamos criar uma classe derivada chamada ProdutoPerecivel.
+    Essa classe derivada tem todas as informações da classe pai e possui um atributo adicional chamado
+    data_validade para representar o vencimento do produto.
+
+Polimorfismo:
+    Representa a capacidade de um objeto ser utilizado com comportamentos de maneiras diferentes,
+    a depender do contexto em que é inserido. Essa característica é trabalhada por meio da sobrecarga
+    de métodos, uma técnica em que implementações diferentes são fornecidas por meio de diferentes tipos
+    de parâmetros ou por meio de herança, onde, por exemplo, as classes filhas podem ter comportamentos
+    diferentes das classes pai (super classes).
+
+    No caso das classes Produto e ProdutoPerecivel, o método mostrar_info() pode ter um comportamento
+    diferente na classe derivada ProdutoPerecivel, onde podemos adicionar um aviso informando que o
+    produto é perecível.
+
+====================================================================================================
+Benefícios de utilizar POO em Engenharia de Dados
+====================================================================================================
+
+Profissionais que trabalham com programação e dados, principalmente em papéis de Engenharia de Dados,
+precisam estar alinhados com práticas de Engenharia de Software. É necessário, além do conhecimento
+específico nas ferramentas e estruturas de dados, ter a habilidade de construir um código reutilizável
+e de fácil manutenção, facilitando o trabalho colaborativo em grandes equipes.
+
+Para ajudar a sanar essas necessidades, o paradigma POO possui vários benefícios que atendem a esses
+requisitos. Dentre eles, podemos listar os principais:
+
+    - Reutilização de código: Por meio da herança e composição, podemos criar novas classes com base em outras
+já existentes. Economizando tempo e esforço, sem reescrita de código do zero. Processos como limpeza e
+tratamento de dados, pipelines de ETL, conexões com bancos e fontes de dados podem ser feitos através do
+uso de classes, o que pode reduzir o tamanho do código e melhorar a legibilidade.
+
+    - Modularidade: Ao utilizar o encapsulamento, podemos construir partes do código dedicadas a funções
+    específicas, criando também métodos que ocultam detalhes de implementação e expõem apenas a interface
+    pública de um objeto.
+
+    - Abstração: É possível representar objetos complexos de forma mais simples e fácil de entender,
+tornando o código mais legível e compreensível para outros devs. Pode-se trabalhar desde modelos
+matemáticos e processos de fluxo de trabalho até a estrutura de dados específicas de cada projeto.
+
+    - Flexibilidade: O código permite adaptação à mudanças e adição de novos recursos mais facilmente,
+    de acordo com a necessidade de cada negócio. Em cenários de Big Data, a escalabilidade é um dos
+    fatores principais para garantir que uma aplicação e projeto continue apresentando bom desempenho.
+
+    - Segurança: A interação entre os objetos pode ser limitada quanto a dados internos de um objeto,
+    promovendo um meio mais seguro de interação e prevenindo o acesso não-autorizado.
+
+    - Maior produtividade: A reutilização de código e modularidade tornam o código uma prática
+    produtiva para a equipe, pois facilita a criação, o teste e a manutenção de código, reduzindo a
+    quantidade de trabalho manual.
